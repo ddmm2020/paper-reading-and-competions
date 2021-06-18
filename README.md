@@ -1,7 +1,7 @@
 # paper-reading-and-competions
 
 # competions
-Cassava Leaf Disease Classification 【bronze medal】  
+# Cassava Leaf Disease Classification 【bronze medal】  
 Identify the type of disease present on a Cassava Leaf image  
 From：Makerere University AI Lab  
 ### Summary
