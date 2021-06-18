@@ -1,9 +1,9 @@
 # paper-reading-and-competions
 
 # competions
-Cassava Leaf Disease Classification 【bronze medal】
-Identify the type of disease present on a Cassava Leaf image
-From：Makerere University AI Lab
+Cassava Leaf Disease Classification 【bronze medal】  
+Identify the type of disease present on a Cassava Leaf image  
+From：Makerere University AI Lab  
 ### Summary
 1. Try different loss functions:
 Basic loss function for classification is cross-entropy loss.But because of the noisy label in this competion, the loss functions with high tolerance to noisy label has better performance.some loss function from ***top solutions***  as below:
