@@ -41,3 +41,8 @@ Injecting a lot of diversity in the ensemble is the key to prevent shake in the 
 [Some Code and More details](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions)
 
 
+# BirdCLEF 2021 - Birdcall Identification 银牌
+Identify bird calls in soundscape recordings
+From:Cornell Lab of Ornithology
+What a shame! We overfitted the public score dataset or we may get a gold medal. :sob:
+
