@@ -19,7 +19,8 @@ Injecting a lot of diversity in the ensemble is the key to prevent shake in the 
     * bagging
     * Ensemble different backbones
 4. Confident Learning (ICML 2020) [paper](https://arxiv.org/pdf/1911.00068.pdf)  
-    Cleanlab package can help us to find some error label.
+    Cleanlab package can help us to find some error label.  
+    ![One Example](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/images/cassava_1.png)
     
 5. Augmentations:  
  Includeing standard enhancements below mix is useful:  
@@ -51,6 +52,8 @@ There are 2 major issues to address in this challenge: (1) label weakness and no
 
 
 1. Multi-stage training
+    using the prediction label to clip the train sound file to get cleaner train clips.
+
 2. Masked loss / Focal loss  
     Primary labels were noisy, but secondary labels were even noisier. As a result we masked the loss for secondary labels as we didn't want to force the model to learn a presence or an absence when we don't know. We therefore defined a secondary mask that nullifies the BCE loss for secondary labels. For instance, assuming only 3 ebird_code b0, b1, and b2, and a clip with primary label b0 and secondary label b1, then these two target values are possible:  
 [1, 0, 0]  
@@ -59,8 +62,10 @@ The secondary mask is therefore:
 [1, 0, 1]  
 For merged clips, a target is masked if it it not one of the primary labels and if it is one of the secondary labels.  
 
-3. self-attention block [From](https://www.kaggle.com/c/birdsong-recognition/discussion/183258)
-   [paper CVPR 2015](https://arxiv.org/pdf/1411.6228.pdf)
+3. self-attention block [kaggle discussion](https://www.kaggle.com/c/birdsong-recognition/discussion/183258)  
+    CVPR 2015 [paper](https://arxiv.org/pdf/1411.6228.pdf)
+   
+   ![model](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/images/bird_self_attention.png)
 
 ```
 class AttnBlock(nn.Module):
