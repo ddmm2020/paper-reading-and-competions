@@ -20,7 +20,7 @@ CutMix:就是将一部分区域cut掉但不填充0像素而是随机填充训练
 
 但是在细粒度分类任务中，Mixup和Cutmix单纯的从像素级别进行混合存在不合理的地方，下左图所示，SnapMix 从语义图中进行混合
 
-![image-20210617211156448](C:\Users\86138\Desktop\参赛总结\images\snapMix.png)
+![image-20210617211156448](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/images/snapMix.png)
 
 
 
@@ -95,7 +95,7 @@ if args.get_noise_indices:
     )
 ```
 
-![image-20210617172037872](C:\Users\86138\Desktop\参赛总结\images\cassava_1.png)
+![image-20210617172037872](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/images/cassava_1.png)
 
 
 
@@ -114,7 +114,7 @@ if args.get_noise_indices:
 
 公式：
 
-![image-20210617203051232](C:\Users\86138\Desktop\参赛总结\images\Bi-Tempered_loss.png)
+![image-20210617203051232](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/images/Bi-Tempered_loss.png)
 
 代码：
 
