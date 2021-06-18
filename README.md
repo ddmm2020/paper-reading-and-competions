@@ -38,6 +38,6 @@ Injecting a lot of diversity in the ensemble is the key to prevent shake in the 
         
         Help to understand which pixels features are important.
 
-[Some Code and details](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/Cassava%20Leaf%20Disease%20Classification.md)
+[Some Code and More details](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions)
 
 
