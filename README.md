@@ -5,13 +5,12 @@ Cassava Leaf Disease Classification 【bronze medal】
 Identify the type of disease present on a Cassava Leaf image  
 From：Makerere University AI Lab  
 ### Summary
-1. Try different loss functions:
-Basic loss function for classification is cross-entropy loss.But because of the noisy label in this competion, the loss functions with high tolerance to noisy label has better performance.some loss function from ***top solutions***  as below:
-    * Bi-Tempered Logistic Loss (NIPS 2019)
-    * Taylor Cross Entropy loss (IJCAI 2020)
-    * label smoothing is a useful trick.
-2. ViT and EfficientNet are better backbones. 
-
+1. Try different loss functions:  
+Basic loss function for classification is cross-entropy loss.But because of the noisy label in this competion, the loss functions with high tolerance to noisy label has better performance.some loss function from ***top solutions***  as below:  
+    * Bi-Tempered Logistic Loss (NIPS 2019)  
+    * Taylor Cross Entropy loss (IJCAI 2020)  
+    * label smoothing is a useful trick.  
+2. ViT and EfficientNet are better backbones.  
     Attention Learning in CV.
 4. Ensemble
 Injecting a lot of diversity in the ensemble is the key to prevent shake in the Private Dataset.
