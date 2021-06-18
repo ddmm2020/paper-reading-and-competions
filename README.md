@@ -44,5 +44,5 @@ Injecting a lot of diversity in the ensemble is the key to prevent shake in the 
 # BirdCLEF 2021 - Birdcall Identification 银牌
 Identify bird calls in soundscape recordings
 From:Cornell Lab of Ornithology
-What a shame! We overfitted the public score dataset or we may get a gold medal. :sob:
+What a shame! We overfitted the public score dataset or we may get a gold medal. :sob: :sob: :sob:
 
