@@ -42,7 +42,60 @@ Injecting a lot of diversity in the ensemble is the key to prevent shake in the 
 
 
 # BirdCLEF 2021 - Birdcall Identification 银牌
-Identify bird calls in soundscape recordings
-From:Cornell Lab of Ornithology
-What a shame! We overfitted the public score dataset or we may get a gold medal. :sob: :sob: :sob:
+Identify bird calls in soundscape recordings  
+From:Cornell Lab of Ornithology  
+evaluation： F1-Score  
+What a shame! We overfitted the public score dataset or we may get a gold medal. :sob: :sob: :sob:  
 
+There are 2 major issues to address in this challenge: (1) label weakness and noise, (2) domain mismatch between train and test data. 
+
+
+1. Multi-stage training
+2. Masked loss / Focal loss  
+    Primary labels were noisy, but secondary labels were even noisier. As a result we masked the loss for secondary labels as we didn't want to force the model to learn a presence or an absence when we don't know. We therefore defined a secondary mask that nullifies the BCE loss for secondary labels. For instance, assuming only 3 ebird_code b0, b1, and b2, and a clip with primary label b0 and secondary label b1, then these two target values are possible:  
+[1, 0, 0]  
+[1, 1, 0]  
+The secondary mask is therefore:  
+[1, 0, 1]  
+For merged clips, a target is masked if it it not one of the primary labels and if it is one of the secondary labels.  
+
+3. self-attention block [From](https://www.kaggle.com/c/birdsong-recognition/discussion/183258)
+   [paper CVPR 2015](https://arxiv.org/pdf/1411.6228.pdf)
+
+```
+class AttnBlock(nn.Module):
+    def __init__(self, n=512, nheads=8, dim_feedforward=512):
+        super().__init__()
+        self.attn = nn.MultiheadAttention(n,nheads)
+        self.norm = nn.LayerNorm(n)
+        self.drop = nn.Dropout(0.2)
+        
+    def forward(self, x):
+        shape = x.shape
+        x = x.view(shape[0],shape[1],-1).permute(2,0,1)
+        x = self.norm(self.drop(self.attn(x,x,x)[0]) + x)
+        x = x.permute(1,2,0).reshape(shape)
+        return x    
+
+class Model(nn.Module):
+    def __init__(self, n=len(label_map), arch='resnext50_32x4d_ssl', 
+                 path='facebookresearch/semi-supervised-ImageNet1K-models', ps=0.5):
+        super().__init__()
+        m = torch.hub.load(path, arch)
+        nc = list(m.children())[-1].in_features
+        self.enc = nn.Sequential(*list(m.children())[:-2])
+        
+        shape = self.enc[0].weight.shape
+        w = self.enc[0].weight.sum(1).unsqueeze(1)
+        self.enc[0] = nn.Conv2d(1, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+        self.enc[0].weight = nn.Parameter(w)
+
+        nh = 768
+        self.head = nn.Sequential(nn.Conv2d(nc,nh,(config.n_mels//32,1)),AttnBlock(nh),AttnBlock(nh),
+                                  nn.Conv2d(nh,n,1))
+        
+    def forward(self, x):
+        x = self.head(self.enc(x))
+        #bs,n,1,len//32
+        return torch.logsumexp(x,-1).squeeze() - torch.Tensor([x.shape[-1]]).to(x.device).log()
+```
