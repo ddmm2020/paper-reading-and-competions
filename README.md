@@ -69,7 +69,7 @@ For merged clips, a target is masked if it it not one of the primary labels and 
 3. self-attention block [kaggle discussion](https://www.kaggle.com/c/birdsong-recognition/discussion/183258)  
     CVPR 2015 [paper](https://arxiv.org/pdf/1411.6228.pdf)
    
-   ![model](./competions/images/bird_self_attention.png)
+   ![model](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/images/bird_self_attention.png)
 
 ```
 class AttnBlock(nn.Module):
