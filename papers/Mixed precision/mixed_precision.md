@@ -37,7 +37,7 @@ fraction 的位数越多，浮点数就越精确。而指数部分 exponent 的�
 
    - 如果 fraction 位 不为0，则表示一个非常小的数字（subnormal numbers），其计算方式：
 
-     ![](<img src="https://latex.codecogs.com/svg.image?(-1)^{\text&space;{signbit&space;}}&space;\times&space;2^{-14}&space;\times\left(0&plus;\frac{\text&space;{&space;fraction&space;}}{1024}\right)&space;" title="(-1)^{\text {signbit }} \times 2^{-14} \times\left(0+\frac{\text { fraction }}{1024}\right) " />)
+     <img src="https://latex.codecogs.com/svg.image?(-1)^{\text&space;{signbit&space;}}&space;\times&space;2^{-14}&space;\times\left(0&plus;\frac{\text&space;{&space;fraction&space;}}{1024}\right)&space;" title="(-1)^{\text {signbit }} \times 2^{-14} \times\left(0+\frac{\text { fraction }}{1024}\right) " />
 
 2. **如果 exponent 位全部位1：**
 
@@ -47,21 +47,11 @@ fraction 的位数越多，浮点数就越精确。而指数部分 exponent 的�
    
 3. **exponent 位的其他情况：**
 
-   计算方式为：$(-1)^{\text {signbit }} \times 2^{(\text {exponent-15 })} \times\left(1+\frac{\text { fraction }}{1024}\right)$
+   计算方式为：
+<img src="https://latex.codecogs.com/svg.image?(-1)^{\text&space;{signbit&space;}}&space;\times&space;2^{-14}&space;\times\left(0&plus;\frac{\text&space;{&space;fraction&space;}}{1024}\right)&space;" title="(-1)^{\text {signbit }} \times 2^{-14} \times\left(0+\frac{\text { fraction }}{1024}\right) " />
 
+![](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/Mixed%20precision/images/part.png)
 
-
-以IEEE Stardard半精度数(16位)为例，特殊的几个数：
-
-- 最小小数的表示 (smallest  positive  subnormal  number)
-  $$ 0 00000 00000000012 = 00011_{6} = {\displaystyle 2^{-14}\times (0+{\frac {1}{1024}})} ≈ 0.000000059604645$$ 
-
-- 最大整数(largest normal number)
-
-    $$0 11110 11111111112 = 7bff16 = {\displaystyle 2^{15}\times (1+{\frac {1023}{1024}})}{\displaystyle 2^{15}\times (1+{\frac {1023}{1024}})} = 65504$$
-    
-- 小于零的最大数 (largest number less than one)
-$$ 0 01110 11111111112 = 3bff16 = {\displaystyle 2^{-1}\times (1+{\frac {1023}{1024}})}{\displaystyle 2^{-1}\times (1+{\frac {1023}{1024}})} ≈ 0.99951172$$
 
 其他更多的边界情况可以参考[wiki](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)
 
