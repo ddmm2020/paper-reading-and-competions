@@ -73,7 +73,7 @@ $$ 0 01110 11111111112 = 3bff16 = {\displaystyle 2^{-1}\times (1+{\frac {1023}{1
 
 ![image-20210521205747527](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/Mixed%20precision/images/各种数值.png)
 
-**3.1 FP32 权重备份(FP32 MASTER COPY OF WEIGHTS)**
+**3.1 FP32 权重备份(FP32 MASTER COPY OF WEIGHTS)**  
    FP16相比于FP32具有更好的吞吐量。但相比于FP32数值表示，FP16数值表达的数值范围约为$2^{-24} {\sim} 65504$，远小于FP32的数值表达范围，在实际使用过程中，可能会遇到**溢出错误**和**舍入误差**问题，进而影响到计算的精度。文章作者通过备份FP 32的权重解决了这个问题，具体做法如下图所示，对weights, activations, gradients 的计算使用FP16，对于weights的更新采用FP32精度。 
 
 $$
@@ -83,20 +83,19 @@ $$
 
 ![image-20210522164846855](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/Mixed%20precision/images/FP32备份.png)
 
-**3.2 损失缩放（Loss Scale）**
-
-        下图是SSD网络在训练时的梯度分布，67%梯度在FP16精度下的值为0。为了解决这个下溢出的问题，采用Loss Scale方法将梯度整体右移。如果将梯度$\times 8$（相当于右移三位），这样就可以采用FP16表示$2^{-27}$的数。具体的做法是在计算的loss上进行缩放，根据**反向传播过程中的链式法则**，这个缩放因子会作用于每个梯度。在更新weights时，将缩放因子取消即可。
+**3.2 损失缩放（Loss Scale）**  
+   下图是SSD网络在训练时的梯度分布，67%梯度在FP16精度下的值为0。为了解决这个下溢出的问题，采用Loss Scale方法将梯度整体右移。如果将梯度$\times 8$（相当于右移三位），这样就可以采用FP16表示$2^{-27}$的数。具体的做法是在计算的loss上进行缩放，根据**反向传播过程中的链式法则**，这个缩放因子会作用于每个梯度。在更新weights时，将缩放因子取消即可。
     
     	在作者的实验中，**采用$\times 8$缩放可以达到使用FP32精度相同的结果**。进一步证明了，模型**参数存在着大量的冗余**。
 
 <img src="https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/Mixed%20precision/images/梯度问题.png" alt="image-20210522171216814" style="zoom:67%;" />
 
-**3.3 算术精度(ARITHMETIC PRECISION)**
-    	在混合计算过程中，NVIDIA的解决方案为，**利用FP16进行乘法和存储，利用FP32来进行加法计算**。 这么做的原因主要是为了减少加法过程中的舍入误差，保证精度不损失。常见的计算场景有下面三种。
+**3.3 算术精度(ARITHMETIC PRECISION)**  
+    在混合计算过程中，NVIDIA的解决方案为，**利用FP16进行乘法和存储，利用FP32来进行加法计算**。 这么做的原因主要是为了减少加法过程中的舍入误差，保证精度不损失。常见的计算场景有下面三种。
 
-1. **在向量乘法中**，将向量乘积以FP32累加，写入内存之前将其转换为FP16
-2. **在Reduction操作中**，读写采用FP16精度，计算采用FP32
-3. **在Point-wise操作中**，内存带宽有限，算术精度不是速度受限的主要因素，FP16或者FP32都可以使用。
+1. **在向量乘法中**，将向量乘积以FP32累加，写入内存之前将其转换为FP16  
+2. **在Reduction操作中**，读写采用FP16精度，计算采用FP32  
+3. **在Point-wise操作中**，内存带宽有限，算术精度不是速度受限的主要因素，FP16或者FP32都可以使用。  
 
 <img src="https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/Mixed%20precision/images/NVIDIA解决方案.png" alt="image-20210522180341889" style="zoom:67%;" />
 
