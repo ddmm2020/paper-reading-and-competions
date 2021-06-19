@@ -1,6 +1,6 @@
 ## 混合精度
 
-** 学习资料 **
+**学习资料**
 
 - [混合精度-维基百科](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)
 - [Experiments with Mixed Prevision Algorithms in Linear Algebra](https://smc2021.ornl.gov/sessions/jack-dongarra-university-of-tennessee/)
