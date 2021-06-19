@@ -37,7 +37,7 @@ fraction 的位数越多，浮点数就越精确。而指数部分 exponent 的�
 
    - 如果 fraction 位 不为0，则表示一个非常小的数字（subnormal numbers），其计算方式：
 
-     $$ (-1)^{\text {signbit }} \times 2^{-14} \times\left(0+\frac{\text { fraction }}{1024}\right) $$
+     ![](<img src="https://latex.codecogs.com/svg.image?(-1)^{\text&space;{signbit&space;}}&space;\times&space;2^{-14}&space;\times\left(0&plus;\frac{\text&space;{&space;fraction&space;}}{1024}\right)&space;" title="(-1)^{\text {signbit }} \times 2^{-14} \times\left(0+\frac{\text { fraction }}{1024}\right) " />)
 
 2. **如果 exponent 位全部位1：**
 
