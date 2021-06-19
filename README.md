@@ -5,7 +5,7 @@
 # Papers reading note
  [CV](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/CV/computer_vision.md)  
  [HPC about mixed_precision](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/Mixed%20precision/mixed_precision.md)  
- [HPC about NN_pruning](./papers/NN%20pruning/NN pruning.pdf)  
+ [HPC about NN_pruning](./papers/NN pruning/NN pruning.pdf)  
  
 # competions
 # Cassava Leaf Disease Classification 铜牌  
