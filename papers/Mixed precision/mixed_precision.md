@@ -73,9 +73,8 @@ $$ 0 01110 11111111112 = 3bff16 = {\displaystyle 2^{-1}\times (1+{\frac {1023}{1
 
 ![image-20210521205747527](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/Mixed%20precision/images/各种数值.png)
 
-** 3.1 FP32 权重备份(FP32 MASTER COPY OF WEIGHTS)**
-
-       FP16相比于FP32具有更好的吞吐量。但相比于FP32数值表示，FP16数值表达的数值范围约为$2^{-24} {\sim} 65504$，远小于FP32的数值表达范围，在实际使用过程中，可能会遇到**溢出错误**和**舍入误差**问题，进而影响到计算的精度。文章作者通过备份FP 32的权重解决了这个问题，具体做法如下图所示，对weights, activations, gradients 的计算使用FP16，对于weights的更新采用FP32精度。 
+**3.1 FP32 权重备份(FP32 MASTER COPY OF WEIGHTS)**
+   FP16相比于FP32具有更好的吞吐量。但相比于FP32数值表示，FP16数值表达的数值范围约为$2^{-24} {\sim} 65504$，远小于FP32的数值表达范围，在实际使用过程中，可能会遇到**溢出错误**和**舍入误差**问题，进而影响到计算的精度。文章作者通过备份FP 32的权重解决了这个问题，具体做法如下图所示，对weights, activations, gradients 的计算使用FP16，对于weights的更新采用FP32精度。 
 
 $$
 weights = weights + lr * gradients
