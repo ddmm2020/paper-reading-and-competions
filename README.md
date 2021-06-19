@@ -1,4 +1,7 @@
 # paper-reading-and-competions
+![](https://img.shields.io/badge/author-ddmm-brightgreen)
+[![](https://img.shields.io/badge/zhihu-@ddmm-red.svg)](https://www.zhihu.com/people/liu-wei-jian-14-51/posts)
+
 # Papers reading note
  [CV](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/CV/computer_vision.md)  
  [HPC about mixed_precision](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/papers/Mixed%20precision/mixed_precision.md)  
