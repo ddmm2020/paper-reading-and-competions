@@ -24,13 +24,13 @@ Injecting a lot of diversity in the ensemble is the key to prevent shake in the 
     * Ensemble different backbones
 4. Confident Learning (ICML 2020) [paper](https://arxiv.org/pdf/1911.00068.pdf)  
     Cleanlab package can help us to find some error label.  
-    ![One Example](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/images/cassava_1.png)
+    ![One Example](./competions/images/cassava_1.png)
     
 5. Augmentations:  
  Includeing standard enhancements below mix is useful:  
  Mixup(ICLR 2018) [paper](https://arxiv.org/pdf/1710.09412.pdf)/Cutmix(ICCV 2019) [paper](https://openaccess.thecvf.com/content_ICCV_2019/papers/Yun_CutMix_Regularization_Strategy_to_Train_Strong_Classifiers_With_Localizable_Features_ICCV_2019_paper.pdf)  /SnapMix(AAAI 2021) [paper](https://arxiv.org/pdf/2012.04846.pdf)
 
-  ![snapMix](https://github.com/ddmm2020/paper-reading-and-competions/blob/main/competions/images/snapMix.png)
+  ![snapMix](./competions/images/snapMix.png)
   
 7. Others
     * Advprop(CVPR 2020) [paper](https://openaccess.thecvf.com/content_CVPR_2020/papers/Xie_Adversarial_Examples_Improve_Image_Recognition_CVPR_2020_paper.pdf): 
